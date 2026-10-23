@@ -1,10 +1,13 @@
-// Replace every placeholder with the values from your Firebase project.
-// Firebase Console -> Project settings -> General -> Your apps -> Web app.
+```javascript
+// ChatterWave Firebase Configuration
+
 export const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_STORAGE_BUCKET",
-  messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID"
+  apiKey: "AIzaSyBLcdxb-v-20w9tQT7uyHTJxjWpMW-kLiM",
+  authDomain: "chattest-73f6e.firebaseapp.com",
+  projectId: "chattest-73f6e",
+  storageBucket: "chattest-73f6e.firebasestorage.app",
+  messagingSenderId: "870863001056",
+  appId: "1:870863001056:web:a1e970bec7172f279d0785",
+  measurementId: "G-MGZY0X0VDT"
 };
+```
