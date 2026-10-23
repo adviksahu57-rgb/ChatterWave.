@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatterWave — Messages</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section id="authScreen" class="auth-screen">
+      <div class="auth-card">
+        <div class="brand-mark">✦</div>
+        <h1>ChatterWave</h1>
+        <p class="muted">Your conversations, all in one place.</p>
+        <div class="tabs">
+          <button id="loginTab" class="tab active">Log in</button>
+          <button id="signupTab" class="tab">Create account</button>
+        </div>
+        <form id="authForm">
+          <label id="nameLabel" class="hidden">Display name
+            <input id="displayName" autocomplete="name" maxlength="40" placeholder="Your name">
+          </label>
+          <label>Email
+            <input id="email" type="email" autocomplete="email" required placeholder="you@example.com">
+          </label>
+          <label>Password
+            <input id="password" type="password" autocomplete="current-password" minlength="6" required placeholder="At least 6 characters">
+          </label>
+          <button class="primary full" id="authSubmit" type="submit">Log in</button>
+          <p id="authError" class="error" role="alert"></p>
+        </form>
+        <p class="tiny muted">Demo project. Do not reuse a password from another account.</p>
+      </div>
+    </section>
+
+    <section id="chatApp" class="chat-app hidden">
+      <aside class="sidebar">
+        <header class="sidebar-header">
+          <div class="brand-line"><span class="brand-mark small">✦</span><strong>ChatterWave</strong></div>
+          <div class="header-actions">
+            <button id="newChatBtn" class="icon-btn" title="Start a chat" aria-label="Start a chat">＋</button>
+            <button id="logoutBtn" class="icon-btn" title="Log out" aria-label="Log out">↪</button>
+          </div>
+        </header>
+        <div class="self-card">
+          <div id="myAvatar" class="avatar">Y</div>
+          <div class="self-details"><strong id="myName">You</strong><span id="myEmail" class="muted"></span></div>
+          <span class="online-dot" title="Signed in"></span>
+        </div>
+        <div class="search-wrap"><span>⌕</span><input id="searchChats" placeholder="Search chats" aria-label="Search chats"></div>
+        <div class="section-label">RECENT CHATS</div>
+        <div id="chatList" class="chat-list"></div>
+        <div class="sidebar-foot">Private conversations start with people you add.</div>
+      </aside>
+
+      <section class="conversation">
+        <div id="emptyState" class="empty-state">
+          <div class="empty-art">✉</div>
+          <h2>Your messages, made simple</h2>
+          <p>Choose a conversation or start chatting with someone by email.</p>
+          <button id="emptyNewChatBtn" class="primary">＋ Start a conversation</button>
+        </div>
+
+        <div id="conversationPanel" class="conversation-panel hidden">
+          <header class="conversation-header">
+            <div id="peerAvatar" class="avatar">C</div>
+            <div class="peer-info"><strong id="peerName">Contact</strong><span id="peerStatus" class="muted">Chat</span></div>
+            <div class="call-actions">
+              <button id="audioCallBtn" class="outline-btn" title="Start audio call">☎ <span>Audio</span></button>
+              <button id="videoCallBtn" class="outline-btn" title="Start video call">▣ <span>Video</span></button>
+            </div>
+          </header>
+          <div id="messages" class="messages" aria-live="polite"></div>
+          <div class="composer-area">
+            <div id="uploadStatus" class="upload-status"></div>
+            <form id="messageForm" class="composer">
+              <label class="attach-btn" title="Attach an image or file">＋<input id="fileInput" type="file" accept="image/*,.pdf,.txt,.doc,.docx" hidden></label>
+              <input id="messageInput" maxlength="4000" placeholder="Write a message..." autocomplete="off" aria-label="Message">
+              <button class="send-btn" type="submit" aria-label="Send message">➤</button>
+            </form>
+            <p class="composer-hint">Enter to send · Attachments up to 5 MB</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="newChatDialog" class="modal">
+    <form id="newChatForm" method="dialog">
+      <div class="modal-head"><h2>Start a conversation</h2><button type="button" id="closeNewChat" class="icon-btn">×</button></div>
+      <p class="muted">Enter the email address of a person who has created an account.</p>
+      <label>Contact email
+        <input id="contactEmail" type="email" required placeholder="friend@example.com">
+      </label>
+      <p id="newChatError" class="error" role="alert"></p>
+      <button type="submit" class="primary full">Find person</button>
+    </form>
+  </dialog>
+
+  <dialog id="callDialog" class="modal call-modal">
+    <div class="call-glow"></div>
+    <div id="callAvatar" class="call-avatar">C</div>
+    <h2 id="callTitle">Calling…</h2>
+    <p id="callStatus" class="muted">Connecting securely through your browser</p>
+    <div id="remoteVideoWrap" class="remote-video-wrap hidden">
+      <video id="remoteVideo" autoplay playsinline></video>
+      <video id="localVideo" autoplay muted playsinline></video>
+    </div>
+    <audio id="remoteAudio" autoplay></audio>
+    <div class="call-buttons">
+      <button id="muteCallBtn" class="call-control" title="Mute microphone">🎙</button>
+      <button id="cameraCallBtn" class="call-control" title="Toggle camera">▣</button>
+      <button id="hangupBtn" class="call-control hangup" title="End call">☎</button>
+    </div>
+    <p class="tiny muted">Allow microphone/camera access when your browser asks.</p>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
